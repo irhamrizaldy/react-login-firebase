@@ -4,19 +4,20 @@ import { connect } from "react-redux";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
-
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
   return (
     <Switch>
       <ProtectedRoute
-        exactpath="/"
+        exact
+        path="/"
         component={Home}
         isAuthenticated={isAuthenticated}
         isVerifying={isVerifying}
       />
       <Route path="/login" component={Login} />
-    </Switch>);
+    </Switch>
+  );
 }
 function mapStateToProps(state) {
   return {

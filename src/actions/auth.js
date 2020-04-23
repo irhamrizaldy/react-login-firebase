@@ -67,7 +67,8 @@ export const loginUser = (email, password) => dispatch => {
         .signInWithEmailAndPassword(email, password)
         .then(user => {
             dispatch(receiveLogin(user));
-        }).catch(error => {
+        })
+        .catch(error => {
             //Do something with the error if you want!
             dispatch(loginError());
         });
@@ -80,7 +81,8 @@ export const logoutUser = () => dispatch => {
         .signOut()
         .then(() => {
             dispatch(receiveLogout());
-        }).catch(error => {
+        })
+        .catch(error => {
             //Do something with the error if you want!
             dispatch(logoutError());
         });
@@ -88,12 +90,10 @@ export const logoutUser = () => dispatch => {
 
 export const verifyAuth = () => dispatch => {
     dispatch(verifyRequest());
-    myFirebase
-        .auth()
-        .onAuthStateChanged(user => {
-            if (user !== null) {
-                dispatch(receiveLogin(user));
-            }
-            dispatch(verifySuccess());
-        });
+    myFirebase.auth().onAuthStateChanged(user => {
+        if (user !== null) {
+            dispatch(receiveLogin(user));
+        }
+        dispatch(verifySuccess());
+    });
 };

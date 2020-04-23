@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { loginUser } from "../actions/auth";
 import { withStyles } from "@material-ui/styles";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -70,11 +71,12 @@ class Login extends Component {
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Sign in
-                            </Typography>
+            </Typography>
                         <TextField
                             variant="outlined"
                             margin="normal"
-                            fullWidthid="email"
+                            fullWidth
+                            id="email"
                             label="Email Address"
                             name="email"
                             onChange={this.handleEmailChange}
@@ -90,9 +92,22 @@ class Login extends Component {
                             onChange={this.handlePasswordChange}
                         />
                         {loginError && (
-                            <Typography component="p" className={classes.errorText}>Incorrect email or password.</Typography>)}<Button type="button" fullWidthvariant="contained" color="primary" className={classes.submit} onClick={this.handleSubmit}>Sign In</Button>
+                            <Typography component="p" className={classes.errorText}>
+                                Incorrect email or password.
+                            </Typography>
+                        )}
+                        <Button
+                            type="button"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={this.handleSubmit}
+                        >
+                            Sign In
+            </Button>
                     </Paper>
-                </Container >
+                </Container>
             );
         }
     }
